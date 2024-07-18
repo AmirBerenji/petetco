@@ -2,32 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+[type='password'] {
+    border-left-width: 0px !important;
+    border-right-width: 0px !important;
+    border-top-width: 0px !important;
 }
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+[type='password']:focus {
+    --tw-ring-offset-width :-2px !important
 }
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+[type='email'] {
+    border-left-width: 0px !important;
+    border-right-width: 0px !important;
+    border-top-width: 0px !important;
+}
+[type='email']:focus {
+    --tw-ring-offset-width :-2px !important
+}
+[type='date'] {
+    border-left-width: 0px !important;
+    border-right-width: 0px !important;
+    border-top-width: 0px !important;
+}
+[type='date']:focus {
+    --tw-ring-offset-width :-2px !important
+}
+select{
+    border-left-width: 0px !important;
+    border-right-width: 0px !important;
+    border-top-width: 0px !important;
+}
+select:focus{
+    --tw-ring-offset-width :-2px !important
+}
+textarea{
+    border-left-width: 0px !important;
+    border-right-width: 0px !important;
+    border-top-width: 0px !important;
+}
+textarea:focus{
+    --tw-ring-offset-width :-2px !important
 }
