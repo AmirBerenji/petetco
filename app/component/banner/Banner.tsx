@@ -3,19 +3,12 @@ import Image from 'next/image';
 export default function Banner()
 {
     return(
-        // <div className='max-sm:hidden' >
-        //     <div className='relative w-full h-[700px]'>
-
-        //         <Image src="/assets/categoryimages/banner/banner.png" fill alt='cover' objectFit='contain' />
-        //     </div>
-        // </div>
-
-    <div className="w-screen h-screen flex items-center justify-center bg-zinc-200">
-        <div className="text-white text-center">
-            <h1 className="text-4xl font-bold">Full Screen Component</h1>
-            <p className="mt-4">This component covers the entire viewport.</p>
-        </div>
-    </div>
+        <section className="w-full h-screen relative grid  bg-zinc-100  overflow-hidden z-0 ">
+        <Image src="/assets/categoryimages/banner/circelPink.png" width="560" height="560" alt="hero 1" className='absolute top-0 left-32' />
+        <Image src="/assets/categoryimages/banner/circulePurpel.png" width="800" height="800" alt="hero 1" className="z-0 absolute -bottom-14 lg:right-56 right-2 " />
+        {/* <Image src="/assets/categoryimages/banner/dogBanner.png" width="744" height="900" alt="hero 1" className=" z-10 absolute -bottom-16 lg:right-56 right-2 " /> */}
+      </section>
+      
 
     );    
 } 
