@@ -8,7 +8,7 @@ export default function Home() {
       <section className="w-full border-t-8 border-t-[#F2968F] py-10">
         <div className='container grid grid-cols-1 lg:grid-cols-3 mx-auto px-10 lg:px-40 items-center'>
           <div className="col-span-1 relative">
-            <Image src="/assets/categoryimages/section/main.png" width="300" height="300" alt="hero 1" className='' />
+            <Image src="/assets/categoryimages/section1/main.png" width="300" height="300" alt="hero 1" className='' />
             <Image src="/assets/categoryimages/section1/number.png" width="100" height="100" alt="hero 1" className='z-10 absolute top-0' />
           </div>
           <div className="col-span-1 lg:col-span-2 items-center flex-1 lg:px-28">
@@ -26,7 +26,7 @@ export default function Home() {
         <div className='container grid grid-cols-1 lg:grid-cols-3 mx-auto px-10 lg:px-40 items-center'>
           
         <div className="col-span-1 relative block  xl:hidden lg:hidden ">
-            <Image src="/assets/categoryimages/section/main.png" width="300" height="300" alt="hero 1" className='' />
+            <Image src="/assets/categoryimages/section2/main.png" width="300" height="300" alt="hero 1" className='' />
             <Image src="/assets/categoryimages/section2/number.png" width="100" height="100" alt="hero 1" className='z-10 absolute top-0' />
           </div>
 
@@ -39,7 +39,7 @@ export default function Home() {
           </div>
 
           <div className="col-span-1 relative hidden xl:block lg:block ">
-            <Image src="/assets/categoryimages/section/main.png" width="300" height="300" alt="hero 1" className='' />
+            <Image src="/assets/categoryimages/section2/main.png" width="300" height="300" alt="hero 1" className='' />
             <Image src="/assets/categoryimages/section2/number.png" width="100" height="100" alt="hero 1" className='z-10 absolute top-0' />
           </div>
 
@@ -49,7 +49,7 @@ export default function Home() {
       <section className="w-full  py-10">
         <div className='container grid grid-cols-1 lg:grid-cols-3 mx-auto px-10 lg:px-40 items-center'>
           <div className="col-span-1 relative">
-            <Image src="/assets/categoryimages/section/main.png" width="300" height="300" alt="hero 1" className='' />
+            <Image src="/assets/categoryimages/section3/main.png" width="300" height="300" alt="hero 1" className='' />
             <Image src="/assets/categoryimages/section3/number.png" width="100" height="100" alt="hero 1" className='z-10 absolute top-0' />
           </div>
           <div className="col-span-1 lg:col-span-2 items-center flex-1 lg:px-28">
