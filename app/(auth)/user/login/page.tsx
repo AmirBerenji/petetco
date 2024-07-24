@@ -1,29 +1,14 @@
 import Link from 'next/link'
 import React from 'react'
-import MainPic from '@/app/component/general/MainPic';
 import LoginForm from './loginForm';
 import SocialAuth from '@/app/component/general/SocialAuth';
+import MainPic from '@/app/component/general/MainPic';
+
 
 
 
 
 export default function Loginpage() {
-  // async function create(formdata: FormData) {
-  //   'use server'
-  //   const result = await login(formdata);
-  //   if(!!result.success)
-  //   {
-  //     console.log(result);
-  //     redirect('/')
-  //   }
-  //   else
-  //   {
-  //     console.log(result.error);
-  //   }
-  // }
-
-
-
   return (
     <>
 

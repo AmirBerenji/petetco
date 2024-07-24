@@ -1,7 +1,5 @@
 import MainPic from '@/app/component/general/MainPic'
-import MyInput from '@/app/component/general/MyInput';
 import SocialAuth from '@/app/component/general/SocialAuth';
-import { Button } from 'flowbite-react'
 import Link from 'next/link'
 import React from 'react'
 import RegisterForm from './registerForm';
