@@ -26,6 +26,7 @@ export default class CookieConfig {
     setToken = (cookieName: string, value: string) => {
         try {
             const cookieStore = cookies()
+            console.log(value);
             cookieStore.set(cookieName, value)
         } catch
         {
@@ -35,11 +36,8 @@ export default class CookieConfig {
 
     deleteCookie = (cookieName: string) => {
         try {
-
-
             const cookieStore = cookies();
-            cookieStore.set('aaaaa', 'asdasdasd');
-            console.log('SECOND LOG');
+            cookieStore.delete('jwt');
         } catch (e) {
             console.log(e);
         }

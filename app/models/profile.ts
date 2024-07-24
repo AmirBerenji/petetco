@@ -5,4 +5,5 @@ export interface Profile {
     email_verification:string,
     token:string,
     avatar: string
+    data:Profile
 }

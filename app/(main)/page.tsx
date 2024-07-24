@@ -42,7 +42,6 @@ export default function Home() {
             <Image src="/assets/categoryimages/section2/main.png" width="300" height="300" alt="hero 1" className='' />
             <Image src="/assets/categoryimages/section2/number.png" width="100" height="100" alt="hero 1" className='z-10 absolute top-0' />
           </div>
-
         </div>
       </section>
 
