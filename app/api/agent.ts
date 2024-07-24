@@ -28,7 +28,11 @@ axios.interceptors.request.use(
   const requests = {
     get: <T>(url: string) => axios.get<T>(url).then(responseBody),
     getbyvalue: <T>(url: string, value: string) => axios.get<T>(url + "?" + value).then(responseBody),
-    post: <T>(url: string, body: {}) => axios.post<T>(url, body).then(responseBody),
+    post: <T>(url: string, body: {}) => axios.post<T,AxiosResponse<T,any>>(url, body).then(responseBody).catch(error=>{
+      if(error.response){
+        return error.response.data
+      }
+    }),
   }
 
 

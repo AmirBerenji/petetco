@@ -1,4 +1,4 @@
-import MainPic from '@/app/component/general/mainPic'
+import MainPic from '@/app/component/general/MainPic'
 import MyInput from '@/app/component/general/MyInput';
 import { Button } from 'flowbite-react'
 import Link from 'next/link'

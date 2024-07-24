@@ -26,6 +26,7 @@ export default class CookieConfig {
     setToken = (cookieName: string, value: string) => {
         try {
             const cookieStore = cookies()
+            console.log(value);
             cookieStore.set(cookieName, value)
         } catch
         {
