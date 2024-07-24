@@ -1,6 +1,5 @@
 import Image from 'next/image';
 
-
 interface Props {
     className?: string;
   }
@@ -14,6 +13,6 @@ export default function MainPic(prop: Props) {
         <Image src="/assets/categoryimages/banner/dogBanner.png" width="744" height="900" alt="hero 1" className=" z-10 absolute -bottom-16 lg:right-56 right-2 " />
     </div>
 
-    
+
   )
 }

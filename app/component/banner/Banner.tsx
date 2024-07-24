@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import NavbarTopSite from '../nav/NavbarTopSite';
 import MainPic from '../general/MainPic';
 export default function Banner() {
