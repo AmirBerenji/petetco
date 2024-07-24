@@ -36,11 +36,8 @@ export default class CookieConfig {
 
     deleteCookie = (cookieName: string) => {
         try {
-
-
             const cookieStore = cookies();
-            cookieStore.set('aaaaa', 'asdasdasd');
-            console.log('SECOND LOG');
+            cookieStore.delete('jwt');
         } catch (e) {
             console.log(e);
         }

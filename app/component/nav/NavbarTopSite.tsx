@@ -1,7 +1,5 @@
-// import agent from '@/app/api/agent'
-// import CookieConfig from '@/app/lib/cookieconfig';
 
-import CookieConfig from '@/app/lib/cookieconfig';
+import { getProfile } from '@/app/action/apiAction';
 import {
     Avatar,
     Button,
@@ -12,12 +10,12 @@ import {
     Navbar,
     NavbarBrand,
     NavbarCollapse,
-    NavbarLink,
     NavbarToggle,
 } from 'flowbite-react';
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import SignOut from './sign-out';
 
 const navigation = [
     { name: 'Pet Store', href: '#', current: false },
@@ -25,36 +23,30 @@ const navigation = [
     { name: 'Blog', href: '#', current: false },
     { name: 'Calendar', href: '#', current: false },
     { name: 'Login as supplier', href: '/supplier', current: false },
-  ]
+]
 
 async function getData() {
     return navigation
 }
 
-
-// async function getDataFromBarrer() {
-//     const req = await agent.Account.checkToken()
-//     return req
-// }
-
-
-async function getCookie() {
-    const _cookieConfig = new CookieConfig()
-    const cookie = _cookieConfig.getToken('jwt');
+async function getDataFromBarrer() {
+    const req = await getProfile()
+    return req
 }
 
-
 export default async function NavbarTopSite() {
-    const data = await getData()
-  return (
-    <header className='z-50' >
-            <Navbar fluid  className='bg-transparent'>
+    const data = await getData();
+    const userData = await getDataFromBarrer();
+
+
+    return (
+        <header className='z-50' >
+            <Navbar fluid className='bg-transparent'>
                 <NavbarBrand href="/" >
                     <Image src="/assets/logo.png" width={'60'} height={'60'} alt='Pet Managment' className='ml-3' />
                 </NavbarBrand>
                 <div className="flex md:order-2">
-                {/* {(userData.displayName == null) ? <> */}
-                    {(null == null) ? <>
+                    {(userData == undefined) ? <>
                         <div className=' grid grid-cols-2 gap-2 ' >
                             <Link href={'/user/login'} >
                                 <Button gradientDuoTone='pinkToOrange'>Sign In</Button>
@@ -68,18 +60,23 @@ export default async function NavbarTopSite() {
                             arrowIcon={false}
                             inline
                             label={
-                                <Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded className='mr-5' />
+                                (userData != undefined || userData.avatar) ? <>
+                                    <Avatar alt="User settings" img={userData.avatar} rounded className='mr-5' />
+                                </> :
+                                    <Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded className='mr-5' />
                             }
                         >
-                            {/* <DropdownHeader>
-                                <span className="block text-sm">{userData.displayName}</span>
-                                <span className="block truncate text-sm font-medium">{userData.userName}</span>
-                            </DropdownHeader> */}
+                            <DropdownHeader>
+                                <span className="block text-sm">{userData.name}</span>
+                                <span className="block truncate text-sm font-medium">{userData.email}</span>
+                            </DropdownHeader>
                             <DropdownItem><Link href='/userprofile' >My Profile</Link></DropdownItem>
                             <DropdownItem><Link href='/pet/addpet' >Add Pet</Link></DropdownItem>
                             <DropdownItem><Link href='/pet/petlist'  >My Pets</Link></DropdownItem>
                             <DropdownDivider />
-                            <DropdownItem ><Link href='/user/signout'  >Sign out</Link></DropdownItem>
+                            <DropdownItem >
+                                <SignOut />
+                            </DropdownItem>
                         </Dropdown>
 
                     </>}
@@ -88,10 +85,10 @@ export default async function NavbarTopSite() {
                 </div>
                 <NavbarCollapse className='text-gray-700'>
                     {data.map(nav => (
-                        <Link href={nav.href} key={nav.name}  className='text-xl' >{nav.name}</Link>
+                        <Link href={nav.href} key={nav.name} className='text-xl' >{nav.name}</Link>
                     ))}
                 </NavbarCollapse>
             </Navbar>
         </header>
-  )
+    )
 }
