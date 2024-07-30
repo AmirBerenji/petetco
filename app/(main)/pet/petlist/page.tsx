@@ -1,7 +1,5 @@
 
 import { Pet } from '@/app/models/pet';
-import { Button } from 'flowbite-react';
-import Link from 'next/link';
 import PetCard from './petCard';
 
 interface Props {
@@ -10,7 +8,6 @@ interface Props {
 
 
 export default function PetListPage(prop: Props) {
-  // const [isLoading, setLoading] = useState(true);
   return (
     <div className='container m-auto mt-10' >
       <div className='justify-items-center -ml-9 grid  xl:grid-cols-4 md:grid-cols-2 sm:gap-0 sm:grid-cols-1 md:gap-2   ' >
