@@ -74,3 +74,7 @@ export async function getProfile() {
 export async function signOut() {
     new CookieConfig().deleteCookie('jwt');
 }
+
+export async function getAllPet(){
+    const req = await agent.Pet.getAllPet(); 
+}

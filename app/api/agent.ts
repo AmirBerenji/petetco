@@ -3,6 +3,8 @@ import { Login } from "../models/login";
 import CookieConfig from "../lib/cookieconfig";
 import { Profile } from "../models/profile";
 import { Register } from "../models/register";
+import { request } from "http";
+import { Pet } from "../models/pet";
 
 
 
@@ -47,8 +49,13 @@ const Account = {
   getProfile:()=>requests.get<Profile>('/profile')
 }
 
+const Pet = {
+  getAllPet:() => requests.get<Pet>('/pets'),
+}
+
 const agent = {
   Account,
+  Pet
 }
 
 export default agent;
