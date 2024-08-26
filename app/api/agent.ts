@@ -49,13 +49,13 @@ const Account = {
   getProfile:()=>requests.get<Profile>('/profile')
 }
 
-const Pet = {
+const PetAction = {
   getAllPet:() => requests.get<Pet>('/pets'),
 }
 
 const agent = {
   Account,
-  Pet
+  PetAction
 }
 
 export default agent;

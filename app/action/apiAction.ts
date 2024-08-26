@@ -76,5 +76,5 @@ export async function signOut() {
 }
 
 export async function getAllPet(){
-    const req = await agent.Pet.getAllPet(); 
+    const req = await agent.PetAction.getAllPet(); 
 }
