@@ -5,4 +5,5 @@ export interface Pet {
     chipsetNumber: string
     petGuid:string
     identityNumber:string
+    cover:string
   }

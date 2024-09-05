@@ -1,59 +1,51 @@
-import { Button } from 'flowbite-react'
-import Link from 'next/link'
-import React from 'react'
+import { Pet } from "@/app/models/pet";
+import { Button } from "flowbite-react";
+import Image from "next/image";
+import Link from "next/link";
+import React, { useState } from "react";
 
-export default function PetCard() {
+interface Props {
+  pet: Pet;
+}
+
+export default function PetCard(prop: Props) {
+  const [isLoading, setLoading] = useState(true);
   return (
-    < >
-       <div className="relative mt-2 mb-2 ml-8 flex-col rounded-xl bg-white h-fit  bg-clip-border text-gray-800 shadow-md border border-blue-gray-100">
-        <div className="relative mx-4 mt-4  overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg   ">
-          
+    <>
+      <div className="relative h-[300px]  w-full  mt-2 mb-2 ml-8 rounded-md bg-white   bg-clip-border text-gray-800 shadow-md border border-blue-gray-100">
+        <div className="shadow-lg rounded-full h-48 w-48 object-center -mt-20 m-auto border-10 border-blue-gray-800">
+          <Image
+            src={prop.pet.cover}
+            alt={prop.pet.name}
+            width="10"
+            height="10"
+            priority
+            className={`
+                            objecr-cover
+                            group-hover:opacity-75
+                            duration-700
+                            ease-in-out
+                            min-w-48 max-h-48
+                            ${
+                              isLoading
+                                ? "rounded-full grayscale blur-xl scale-150"
+                                : "rounded-full grayscale-0 blur-0 scale-100"
+                            }
+                            `}
+            sizes="(max-width:700px) 100vw, (max-width: 1200px) 50vw, 25vw"
+            onLoadingComplete={() => setLoading(false)}
+          />
         </div>
         <div className="p-2 text-center">
-          <h4 className="mb-1 font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
-            
+          <h4 className="mb-1 uppercase font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+            {prop.pet.name}
           </h4>
           <p className="block bg-gradient-to-tr from-pink-600 to-pink-400 bg-clip-text font-sans text-base font-medium leading-relaxed text-transparent antialiased">
-            
+           
           </p>
           <hr></hr>
         </div>
-
-        <div className=" w-full grid grid-cols-6  justify-center p-2 ">
-          <div className="pl-2  " >
-            
-          </div>
-          <div className="col-span-5 mt-1 " >
-            Vaccination
-          </div>
-        </div>
-        <div className=" w-full grid grid-cols-6  justify-center p-2 ">
-          <div className="pl-2  " >
-            
-          </div>
-          <div className="col-span-5 mt-1 " >
-            Checkup List
-          </div>
-        </div>
-
-
-        
-        <hr></hr>
-        <div className="flex-col w-full  justify-center p-2 ">
-          <Link href="" >
-
-            <Button
-              size="sm"
-
-              className="w-full border rounded   border-blue-gray-300  text-white  bg-[#7395AE] p-3 ">
-              <span>Profile</span>
-            </Button>
-          </Link>
-        </div>
       </div>
-
-
-
     </>
-  )
+  );
 }

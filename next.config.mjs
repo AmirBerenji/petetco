@@ -4,7 +4,7 @@ const nextConfig = {
         serverActions: true
     },
     images:{
-        domains:['localhost']
+        domains:['petetco.maralamirkian.com']
     }
 };
 
