@@ -6,6 +6,7 @@ import Validation from "../api/validation";
 import CookieConfig from "../lib/cookieconfig";
 import { Login } from "../models/login";
 import { Register } from "../models/register";
+import { Pet } from "../models/pet";
 
 export async function login(formdata: FormData) {
     const login: Login = {
@@ -76,5 +77,10 @@ export async function signOut() {
 }
 
 export async function getAllPet(){
+   
     const req = await agent.PetAction.getAllPet(); 
+    console.log(req.data);
+    
+    return(req.data);
+    
 }
