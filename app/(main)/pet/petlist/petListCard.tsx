@@ -23,7 +23,7 @@ export default function PetListCardPage() {
                 <div className='justify-items-center -ml-9 grid  xl:grid-cols-4 md:grid-cols-2 sm:gap-0 sm:grid-cols-1 md:gap-2  ' >
                   {listPet.map((pet,i) => (
                     <>
-                    <div className="w-full mt-20 mr-7 " >
+                    <div className="w-full mt-20 mr-7 " key={i} >
                     <PetCard  pet={pet} key={i}/>
                     </div>
                     </>
@@ -38,7 +38,7 @@ export default function PetListCardPage() {
                 <div className='justify-items-center -ml-9 grid xl:grid-cols-1 md:grid-cols-1 sm:gap-0 sm:grid-cols-1 md:gap-0 mb-9' >
                   {listPet.map((pet,i) => (
                     <>
-                    <div className="w-full mt-20 " >
+                    <div className="w-full mt-20 " key={i} >
                     <PetCard  pet={pet} key={i}/>
                     </div>
                     </>
