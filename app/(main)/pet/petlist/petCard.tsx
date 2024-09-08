@@ -13,19 +13,23 @@ export default function PetCard(prop: Props) {
   return (
     <>
       <div className="relative h-[300px]  w-full  mt-2 mb-2 ml-8 rounded-md bg-white   bg-clip-border text-gray-800 shadow-md border border-blue-gray-100">
-        <div className="shadow-lg rounded-full h-48 w-48 object-center -mt-20 m-auto border-10 border-blue-gray-800">
+        <div className="shadow-lg 
+        rounded-full h-56 w-56 bg-white
+         -mt-20 m-auto border-10 border-blue-gray-800">
           <Image
             src={prop.pet.cover}
             alt={prop.pet.name}
             width="10"
             height="10"
             priority
-            className={`
-                            objecr-cover
+            className={` 
+                            object-cover
                             group-hover:opacity-75
                             duration-700
                             ease-in-out
-                            min-w-48 max-h-48
+                            w-56 h-56
+                            shadow-md
+                            border
                             ${
                               isLoading
                                 ? "rounded-full grayscale blur-xl scale-150"
