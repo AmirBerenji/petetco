@@ -13,9 +13,11 @@ export default function PetCard(prop: Props) {
   return (
     <>
       <div className="relative h-[300px]  w-full  mt-2 mb-2 ml-8 rounded-md bg-white   bg-clip-border text-gray-800 shadow-md border border-blue-gray-100">
-        <div className="shadow-lg 
+        <div
+          className="shadow-lg 
         rounded-full h-56 w-56 bg-white
-         -mt-20 m-auto border-10 border-blue-gray-800">
+         -mt-20 m-auto border-10 border-blue-gray-800"
+        >
           <Image
             src={prop.pet.cover}
             alt={prop.pet.name}
@@ -45,9 +47,14 @@ export default function PetCard(prop: Props) {
             {prop.pet.name}
           </h4>
           <p className="block bg-gradient-to-tr from-pink-600 to-pink-400 bg-clip-text font-sans text-base font-medium leading-relaxed text-transparent antialiased">
-           
+
           </p>
           <hr></hr>
+          <Link href={'profile'} >
+            <Button title="Hello" className="uppercase mt-5">
+              Profile
+            </Button>
+          </Link>
         </div>
       </div>
     </>
