@@ -1,7 +1,7 @@
 import { Pet } from "@/app/models/pet";
 import { Button } from "flowbite-react";
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from 'next/navigation';
 import React, { useState } from "react";
 
 interface Props {
@@ -10,6 +10,11 @@ interface Props {
 
 export default function PetCard(prop: Props) {
   const [isLoading, setLoading] = useState(true);
+  const router = useRouter();
+  const onClick = () => {
+    router.push(`/pet/profile/${prop.pet.id}`);
+  }
+
   return (
     <>
       <div className="relative h-[300px]  w-full  mt-2 mb-2 ml-8 rounded-md bg-white   bg-clip-border text-gray-800 shadow-md border border-blue-gray-100">
@@ -50,11 +55,12 @@ export default function PetCard(prop: Props) {
 
           </p>
           <hr></hr>
-          <Link href={'profile'} >
-            <Button title="Hello" className="uppercase mt-5">
+          
+            <Button 
+            onClick={onClick} 
+            className="uppercase mt-5">
               Profile
             </Button>
-          </Link>
         </div>
       </div>
     </>

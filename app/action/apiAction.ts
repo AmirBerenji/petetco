@@ -79,8 +79,14 @@ export async function signOut() {
 export async function getAllPet(){
    
     const req = await agent.PetAction.getAllPet(); 
-    console.log(req.data);
-    
     return(req.data);
     
+}
+
+export async function getPet(id:string){
+   console.log("tttttt");
+   
+    const req = await agent.PetAction.getPet(id); 
+    console.log(req.data);
+    return(req.data);
 }
