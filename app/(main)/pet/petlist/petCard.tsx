@@ -51,9 +51,6 @@ export default function PetCard(prop: Props) {
           <h4 className="mb-1 uppercase font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
             {prop.pet.name}
           </h4>
-          <p className="block bg-gradient-to-tr from-pink-600 to-pink-400 bg-clip-text font-sans text-base font-medium leading-relaxed text-transparent antialiased">
-                                       
-          </p>
           <hr></hr>
           <div className="grid grid-cols-1 text-left p-3 text-gray-400 uppercase " >
               <div>
