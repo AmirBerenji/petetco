@@ -17,7 +17,7 @@ export default function PetCard(prop: Props) {
 
   return (
     <>
-      <div className="relative h-[300px]  w-full  mt-2 mb-2 ml-8 rounded-md bg-white   bg-clip-border text-gray-800 shadow-md border border-blue-gray-100">
+      <div className="relative h-[360px]  w-full  mt-2 mb-2 ml-8 rounded-md bg-white   bg-clip-border text-gray-800 shadow-md border border-blue-gray-100">
         <div
           className="shadow-lg 
         rounded-full h-56 w-56 bg-white
@@ -52,10 +52,21 @@ export default function PetCard(prop: Props) {
             {prop.pet.name}
           </h4>
           <p className="block bg-gradient-to-tr from-pink-600 to-pink-400 bg-clip-text font-sans text-base font-medium leading-relaxed text-transparent antialiased">
-
+                                       
           </p>
           <hr></hr>
-          
+          <div className="grid grid-cols-1 text-left p-3 text-gray-400 uppercase " >
+              <div>
+                  Breed: {prop.pet.breed.name}          
+              </div> 
+              <div>
+                  Color: {prop.pet.color.name}          
+              </div> 
+              <div>
+                  Gender: {prop.pet.gender}          
+              </div>             
+          </div>
+          <hr></hr>
             <Button 
             onClick={onClick} 
             className="uppercase mt-5">
