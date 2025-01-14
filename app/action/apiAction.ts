@@ -76,12 +76,12 @@ export async function signOut() {
     new CookieConfig().deleteCookie('jwt');
 }
 
-export async function getAllPet(){
-   
-    const req = await agent.PetAction.getAllPet(); 
-    return(req.data);
+export async function getAllPet() : Promise<Pet[]>  {
     
-}
+      const req = await agent.PetAction.getAllPet();
+      return req.data;
+    
+  }
 
 export async function getPet(id:string){
    console.log("tttttt");

@@ -7,13 +7,22 @@ import PetCard from "./petCard";
 
 export default function PetListCardPage() {
     
-    const [listPet,setListPet] = useState<Pet[]>([])
-    useEffect(() => {loadAllPet()},[])
+  const [listPet, setListPet] = useState<Pet[]>([]);
 
-    const loadAllPet = async () =>{
-        const result = await getAllPet();
-        setListPet(result);
+  useEffect(() => {    
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const pets = await getAllPet();
+      setListPet(pets);
+    } catch (error) {
+      console.error('Error loading pets:', error);
     }
+  };
+
+
 
   return (
     <>
@@ -24,7 +33,7 @@ export default function PetListCardPage() {
                   {listPet.map((pet,i) => (
                     <>
                     <div className="w-full mt-20 mr-7 " key={i} >
-                    <PetCard  pet={pet} key={i}/>
+                    {/* <PetCard  pet={pet} key={i}/> */}
                     </div>
                     </>
                     

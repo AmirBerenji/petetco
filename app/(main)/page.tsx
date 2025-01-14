@@ -12,11 +12,14 @@ export default function Home() {
             <Image src="/assets/categoryimages/section1/number.png" width="100" height="100" alt="hero 1" className='z-10 absolute top-0' />
           </div>
           <div className="col-span-1 lg:col-span-2 items-center flex-1 lg:px-28">
-            <h2 className='font-bold text-xl uppercase'>MENTALLY HEALTHY</h2>
+            <h2 className='font-bold text-xl uppercase'>Your Trusted Pet Care Companion</h2>
             <p className='text-justify text-lg mt-5' >
-              For many people, especially those who are lonely, having a pet can be a valuable source of comfort and company.
-              Renting a pet gives lonely people the opportunity to enjoy the presence and love of a pet, which can significantly increase their
-              mood and well-being at such a difficult time.
+            PetetCo is your ultimate solution for managing pet care with ease
+              and confidence. Designed for pet owners, veterinarians, and pet
+              shops, our platform connects you to trusted professionals and
+              services, making pet management simpler than ever. Whether you
+              need expert advice, quality pet products, or reliable care,
+              PetetCo is here to help.
             </p>
           </div>
         </div>
@@ -31,10 +34,13 @@ export default function Home() {
           </div>
 
           <div className="col-span-1 lg:col-span-2 items-center flex-1 lg:px-28">
-            <h2 className='font-bold text-xl uppercase'>animal socialization</h2>
+            <h2 className='font-bold text-xl uppercase'>Simplify Your Pet Care Journey with PetetCo</h2>
             <p className='text-justify text-lg mt-5' >
-            Many pets need to socialize and interact with people and other animals to be happy and healthy.
-            Renting pets also helps those animals that are looking for a permanent home. While they are on rent, they receive care, attention and the opportunity to show their best qualities to potential adopters. This can significantly increase the chances of their successful adaptation and a happy life in a new home.
+            With PetetCo, you can effortlessly find experienced veterinarians,
+              schedule appointments, and access a wide range of pet supplies.
+              Our platform ensures that every aspect of pet care is streamlined
+              and stress-free, giving you more time to enjoy the moments that
+              matter with your furry friends.
             </p>
           </div>
 
@@ -52,10 +58,13 @@ export default function Home() {
             <Image src="/assets/categoryimages/section3/number.png" width="100" height="100" alt="hero 1" className='z-10 absolute top-0' />
           </div>
           <div className="col-span-1 lg:col-span-2 items-center flex-1 lg:px-28">
-            <h2 className='font-bold text-xl uppercase'>convenience</h2>
+            <h2 className='font-bold text-xl uppercase'>Join the PetetCo Community Today</h2>
             <p className='text-justify text-lg mt-5' >
-            You choose your own rental period and schedule, convenient for you. All you need is to pick up your pet and enjoy a temporary companion.
-            Renting allows you to enjoy the wonderful world of animals. You can gain valuable experience and understand whether a particular animal species suits you.
+            At PetetCo, we believe in creating a community where pets come
+              first. From exclusive deals to tailored solutions for pet owners
+              and professionals, our platform is your go-to hub for all things
+              pet-related. Sign up today and experience the joy of effortless
+              pet management with PetetCo!
             </p>
           </div>
         </div>

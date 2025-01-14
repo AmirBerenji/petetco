@@ -23,6 +23,7 @@ export default function PetCard(prop: Props) {
         rounded-full h-56 w-56 bg-white
          -mt-20 m-auto border-10 border-blue-gray-800"
         >
+          {prop.pet.cover && 
           <Image
             src={prop.pet.cover}
             alt={prop.pet.name}
@@ -46,6 +47,7 @@ export default function PetCard(prop: Props) {
             sizes="(max-width:700px) 100vw, (max-width: 1200px) 50vw, 25vw"
             onLoadingComplete={() => setLoading(false)}
           />
+                          }
         </div>
         <div className="p-2 text-center">
           <h4 className="mb-1 uppercase font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">

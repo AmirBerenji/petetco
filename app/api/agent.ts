@@ -50,7 +50,7 @@ const Account = {
 }
 
 const PetAction = {
-  getAllPet:() => requests.get<Pet>('/pets'),
+  getAllPet:() => requests.get<Pet[]>('/pets'),
   getPet:(id:string) => requests.get<Pet>(`/pets/${id}`)
 }
 
