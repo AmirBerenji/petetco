@@ -33,7 +33,7 @@ export default function PetListCardPage() {
                   {listPet.map((pet,i) => (
                     <>
                     <div className="w-full mt-20 mr-7 " key={i} >
-                    {/* <PetCard  pet={pet} key={i}/> */}
+                    <PetCard  pet={pet} key={i}/>
                     </div>
                     </>
                     
