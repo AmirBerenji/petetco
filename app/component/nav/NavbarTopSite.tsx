@@ -73,7 +73,7 @@ export default async function NavbarTopSite() {
                                 <span className="block truncate text-sm font-medium">{userData.email}</span>
                             </DropdownHeader>
                             <DropdownItem><Link href='/userprofile' >My Profile</Link></DropdownItem>
-                            <DropdownItem><Link href='/pet/addpet' >Add Pet</Link></DropdownItem>
+                            {/* <DropdownItem><Link href='/pet/addpet' >Add Pet</Link></DropdownItem> */}
                             <DropdownItem><Link href='/pet/petlist'  >My Pets</Link></DropdownItem>
                             <DropdownDivider />
                             <DropdownItem >
