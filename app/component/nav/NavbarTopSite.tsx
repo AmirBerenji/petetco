@@ -18,11 +18,10 @@ import React from 'react'
 import SignOut from './sign-out';
 
 const navigation = [
-    { name: 'Pet Store', href: '#', current: false },
-    { name: 'Vet', href: '#', current: false },
-    { name: 'Blog', href: '#', current: false },
-    { name: 'Calendar', href: '#', current: false },
-    { name: 'Login as supplier', href: '/supplier', current: false },
+    { name: 'Mange Pet', href: '#', current: false },
+    { name: 'Veterinary', href: '#', current: false },
+    { name: 'Contact', href: '#', current: false },
+    { name: 'About Us', href: '#', current: false },
 ]
 
 async function getData() {
@@ -71,7 +70,7 @@ export default async function NavbarTopSite() {
                                 <span className="block truncate text-sm font-medium">{userData.email}</span>
                             </DropdownHeader>
                             <DropdownItem><Link href='/userprofile' >My Profile</Link></DropdownItem>
-                            <DropdownItem><Link href='/pet/addpet' >Add Pet</Link></DropdownItem>
+                            {/* <DropdownItem><Link href='/pet/addpet' >Add Pet</Link></DropdownItem> */}
                             <DropdownItem><Link href='/pet/petlist'  >My Pets</Link></DropdownItem>
                             <DropdownDivider />
                             <DropdownItem >
@@ -85,7 +84,7 @@ export default async function NavbarTopSite() {
                 </div>
                 <NavbarCollapse className='text-gray-700'>
                     {data.map(nav => (
-                        <Link href={nav.href} key={nav.name} className='text-xl' >{nav.name}</Link>
+                        <Link href={nav.href} key={nav.name} className='text-lg text-gray-500 hover:text-gray-700' >{nav.name}</Link>
                     ))}
                 </NavbarCollapse>
             </Navbar>
