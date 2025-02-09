@@ -8,6 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 
+
 export default function PetListCardPage() {
     
   const [listPet, setListPet] = useState<Pet[]>([]);
@@ -28,8 +29,7 @@ export default function PetListCardPage() {
 
 
   return (
-    <>
-    
+    <>    
         
     {listPet.length === 0 ? (
   

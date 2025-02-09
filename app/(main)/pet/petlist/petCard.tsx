@@ -17,7 +17,9 @@ export default function PetCard(prop: Props) {
 
   return (
     <>
-      <div className="relative h-[360px]  w-full  mt-2 mb-2 ml-8 rounded-md bg-white   bg-clip-border text-gray-800 shadow-md border border-blue-gray-100">
+      <div className="relative h-[360px]  w-full  mt-2 mb-2 ml-8 rounded-md bg-slate-50   
+      bg-clip-border text-gray-800 
+      shadow-md border border-blue-gray-100">
         <div
           className="shadow-lg 
         rounded-full h-56 w-56 bg-white
