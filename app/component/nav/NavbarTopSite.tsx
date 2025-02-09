@@ -22,7 +22,6 @@ const navigation = [
     { name: 'Veterinary', href: '#', current: false },
     { name: 'Contact', href: '#', current: false },
     { name: 'About Us', href: '#', current: false },
-    { name: 'Login as supplier', href: '/supplier', current: false },
 ]
 
 async function getData() {

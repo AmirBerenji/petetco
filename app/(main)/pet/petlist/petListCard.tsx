@@ -46,12 +46,12 @@ export default function PetListCardPage() {
       <hr className="mb-3" />
 
       <p className="text-gray-500 text-sm mb-3">
-        Looks like you haven't added any pets yet. Let’s change that! Click below to add your furry friend.
+        Looks like you haven&apos;t added any pets yet. Let&apos;s change that! Click below to add your furry friend.
       </p>
 
       <hr className="mb-5" />
 
-      <Link href={'/pet/apppet'}   >
+      <Link href={'/pet/petadd'}   >
                                 <Button className="w-full"  gradientDuoTone='pinkToOrange'>Add New Pet</Button>
                             </Link>
       
