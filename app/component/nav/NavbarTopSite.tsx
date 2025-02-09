@@ -61,6 +61,8 @@ export default async function NavbarTopSite() {
                             label={
                                 (userData != undefined || userData.avatar) ? <>
                                     <Avatar alt="User settings" img={userData.avatar} rounded className='mr-5' />
+                                   
+                                    
                                 </> :
                                     <Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded className='mr-5' />
                             }
