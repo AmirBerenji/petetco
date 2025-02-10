@@ -84,9 +84,18 @@ export async function getAllPet() : Promise<Pet[]>  {
   }
 
 export async function getPet(id:string){
-   console.log("tttttt");
-   
     const req = await agent.PetAction.getPet(id); 
-    console.log(req.data);
     return(req.data);
+}
+
+export async function getAllPetKind()
+{
+    const req = await agent.PetBaseInfo.getAllPetKind();
+    return (req.data);
+}
+
+export async function getAllPetBreed(id:string)
+{
+    const req = await agent.PetBaseInfo.getAllPetBreed(id);
+    return (req.data);
 }
