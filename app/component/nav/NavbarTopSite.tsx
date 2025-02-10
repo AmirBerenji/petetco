@@ -67,13 +67,13 @@ export default async function NavbarTopSite() {
                                     <Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded className='mr-5' />
                             }
                         >
-                            <DropdownHeader>
-                                <span className="block text-sm">{userData.name}</span>
-                                <span className="block truncate text-sm font-medium">{userData.email}</span>
+                            <DropdownHeader  >
+                                <span className="block text-sm uppercase font-medium ">{userData.name}</span>
+                                {/* <span className="block truncate text-sm font-medium">{userData.email}</span> */}
                             </DropdownHeader>
-                            <DropdownItem><Link href='/userprofile' >My Profile</Link></DropdownItem>
+                            <DropdownItem className='p-0'><Link href='/userprofile' className='w-full p-3 text-left ' >My Profile</Link></DropdownItem>
                             {/* <DropdownItem><Link href='/pet/addpet' >Add Pet</Link></DropdownItem> */}
-                            <DropdownItem><Link href='/pet/petlist'  >My Pets</Link></DropdownItem>
+                            <DropdownItem className='p-0'><Link href='/pet/petlist' className='w-full p-3 text-left'  >My Pets</Link></DropdownItem>
                             <DropdownDivider />
                             <DropdownItem >
                                 <SignOut />

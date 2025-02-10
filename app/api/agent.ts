@@ -5,6 +5,8 @@ import { Profile } from "../models/profile";
 import { Register } from "../models/register";
 import { request } from "http";
 import { Pet } from "../models/pet";
+import { Kind } from "../models/kind";
+import { Breed } from "../models/breed";
 
 
 
@@ -54,9 +56,15 @@ const PetAction = {
   getPet:(id:string) => requests.get<Pet>(`/pets/${id}`)
 }
 
+const PetBaseInfo={
+  getAllPetKind:() => requests.get<Kind[]>('/kinds'),
+  getAllPetBreed:(id:string) => requests.get<Breed[]>(`/breeds/${id}`)
+}
+
 const agent = {
   Account,
-  PetAction
+  PetAction,
+  PetBaseInfo
 }
 
 export default agent;
