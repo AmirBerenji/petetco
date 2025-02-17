@@ -94,10 +94,16 @@ export async function getPet(id: string) {
 
 export async function getAllPetKind() {
   const req = await agent.PetBaseInfo.getAllPetKind();
+
   return req.data;
 }
 
 export async function getAllPetBreed(id: string) {
   const req = await agent.PetBaseInfo.getAllPetBreed(id);
+  return req.data;
+}
+
+export async function getAllColor() {
+  const req = await agent.PetBaseInfo.getAllPetColor();
   return req.data;
 }

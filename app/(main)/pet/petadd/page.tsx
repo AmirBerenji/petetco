@@ -1,11 +1,51 @@
 "use client";
+import {
+  getAllColor,
+  getAllPetBreed,
+  getAllPetKind,
+} from "@/app/action/apiAction";
 import MyComboBox from "@/app/component/general/MyCombobox";
 import MyDatePicker from "@/app/component/general/MyDatePicker";
 import MyInput from "@/app/component/general/MyInput";
+import { Breed } from "@/app/models/breed";
+import { Color } from "@/app/models/color";
+import { Kind } from "@/app/models/kind";
 import { Button } from "flowbite-react";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 export default function PetAddPage() {
+  const [petKind, setPetKind] = useState<Kind[]>();
+  const [petBreed, setPetBreed] = useState<Breed[]>();
+  const [petColor, setPetColor] = useState<Color[]>();
+
+  const fetchData = async () => {
+    try {
+      const petKinds = await getAllPetKind();
+      const petColors = await getAllColor();
+      setPetKind(petKinds);
+      setPetColor(petColors);
+    } catch (error) {
+      console.error("Error loading pets:", error);
+    }
+  };
+
+  const getBreed = async (kindId: string) => {
+    const breeds = await getAllPetBreed(kindId);
+    setPetBreed(breeds);
+  };
+
+  useEffect(() => {
+    fetchData(); // Fetch data when the component mounts
+  }, []);
+
+  useEffect(() => {}, [setPetBreed]);
+  function ConvertToOptions(data: any) {
+    return data.map((d: any, index: number) => ({
+      value: d.id,
+      label: d.name,
+    }));
+  }
+
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-4 p-5 gap-5">
@@ -19,7 +59,7 @@ export default function PetAddPage() {
         <div className="w-full p-3 col-span-3">
           <div
             className="rounded-md bg-clip-border w-full 
-          shadow-md border border-blue-gray-100 grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 gap-1 p-5"
+          shadow-md border border-blue-gray-100 grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 gap-5 p-5"
           >
             <div className="col-span-2 lg:col-span-1 md:col-span-1 xl:col-span-1">
               <MyInput
@@ -33,15 +73,11 @@ export default function PetAddPage() {
               <MyComboBox
                 name="Kind"
                 label="Kind"
-                options={[
-                  { value: "dog", label: "Dog" },
-                  { value: "cat", label: "Cat" },
-                  { value: "bird", label: "Bird" },
-                ]}
+                options={petKind ? ConvertToOptions(petKind) : []}
                 isNotFloatLabel
                 className="w-full"
                 classNameLabel="text-gray-700"
-                onChange={(e) => console.log(e.target.value)}
+                onChange={(e) => getBreed(e.target.value)}
               />
             </div>
 
@@ -49,11 +85,7 @@ export default function PetAddPage() {
               <MyComboBox
                 name="Breed"
                 label="Breed"
-                options={[
-                  { value: "dog", label: "Dog" },
-                  { value: "cat", label: "Cat" },
-                  { value: "bird", label: "Bird" },
-                ]}
+                options={petBreed ? ConvertToOptions(petBreed) : []}
                 isNotFloatLabel
                 className="w-full"
                 classNameLabel="text-gray-700"
@@ -65,9 +97,8 @@ export default function PetAddPage() {
                 name="Gender"
                 label="Gender"
                 options={[
-                  { value: "dog", label: "Dog" },
-                  { value: "cat", label: "Cat" },
-                  { value: "bird", label: "Bird" },
+                  { value: "male", label: "Male" },
+                  { value: "female", label: "Female" },
                 ]}
                 isNotFloatLabel
                 className="w-full"
@@ -79,11 +110,7 @@ export default function PetAddPage() {
               <MyComboBox
                 name="Color"
                 label="Color"
-                options={[
-                  { value: "dog", label: "Dog" },
-                  { value: "cat", label: "Cat" },
-                  { value: "bird", label: "Bird" },
-                ]}
+                options={petColor ? ConvertToOptions(petColor) : []}
                 isNotFloatLabel
                 className="w-full"
                 classNameLabel="text-gray-700"
