@@ -18,7 +18,6 @@ export default function MyDatePicker(props: Props) {
         className="w-full border-0 rounded-xl p-3"
         name={props.name}
         defaultValue={Date.now()}
-        value={Date.now()}
       />
     </div>
   );
