@@ -9,6 +9,8 @@ import Image from "next/image";
 
 export default function PetListCardPage() {
   const [listPet, setListPet] = useState<Pet[]>([]);
+  const [isLoading, setLoading] = useState(true);
+ 
 
   useEffect(() => {
     fetchData();
@@ -18,6 +20,7 @@ export default function PetListCardPage() {
     try {
       const pets = await getAllPet();
       setListPet(pets);
+      setLoading(false);
     } catch (error) {
       console.error("Error loading pets:", error);
     }
@@ -25,6 +28,12 @@ export default function PetListCardPage() {
 
   return (
     <>
+    {isLoading == true? (<>
+    <div className="w-screen h-screen bg-slate-100 flex items-center justify-center text-center text-2xl text-orange-500 ">
+      Is loading...
+    </div>
+    </>):( <>
+
       {listPet.length === 0 ? (
         <div className="  flex justify-center items-center p-4 mt-20  ">
           <div className="w-full max-w-lg xl:w-1/3 lg:w-1/3 rounded-md bg-slate-50 shadow-md border border-blue-gray-100">
@@ -105,6 +114,8 @@ export default function PetListCardPage() {
           </div>
         </div>
       )}
+    </>) }
     </>
+   
   );
 }
