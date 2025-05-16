@@ -6,6 +6,7 @@ import CookieConfig from "../lib/cookieconfig";
 import { Login } from "../models/login";
 import { Register } from "../models/register";
 import { Pet } from "../models/pet";
+import { AddPet } from "../models/addpet";
 
 export async function login(formdata: FormData) {
   const login: Login = {
@@ -92,9 +93,13 @@ export async function getPet(id: string) {
   return req.data;
 }
 
+export async function addPet(pet: AddPet) {
+  const req = await agent.PetAction.addPet(pet);
+  return req.data;
+}
+
 export async function getAllPetKind() {
   const req = await agent.PetBaseInfo.getAllPetKind();
-
   return req.data;
 }
 

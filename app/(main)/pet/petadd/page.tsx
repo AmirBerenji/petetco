@@ -17,6 +17,12 @@ export default function PetAddPage() {
   const [petKind, setPetKind] = useState<Kind[]>([]);
   const [petBreed, setPetBreed] = useState<Breed[]>([]);
   const [petColor, setPetColor] = useState<Color[]>([]);
+
+  const [selectPetKind, setSelectPetKind] = useState<Kind>();
+  const [selectPetBreed, setSelectPetBreed] = useState("");
+  const [selectPetColor, setSelectPetColor] = useState<Color>();
+  const [selectPetGender, setSelectPetGender] = useState<String>();
+
   const [image, setImage] = useState<string | null>(null);
 
   // Handle image upload
@@ -83,7 +89,11 @@ export default function PetAddPage() {
           <label htmlFor="imageUpload" className="cursor-pointer">
             <div className="shadow-lg rounded-full lg:rounded-xl md:rounded-xl h-72 w-72 bg-white m-auto border-10 border-blue-gray-800 flex items-center justify-center overflow-hidden">
               {image ? (
-                <img src={image} alt="Uploaded" className="h-full w-full object-cover" />
+                <img
+                  src={image}
+                  alt="Uploaded"
+                  className="h-full w-full object-cover"
+                />
               ) : (
                 <span className="text-gray-500">Click to upload</span>
               )}
@@ -133,7 +143,7 @@ export default function PetAddPage() {
                 isNotFloatLabel
                 className="w-full"
                 classNameLabel="text-gray-700"
-                onChange={(e) => console.log(e.target.value)}
+                onChange={(e) => setSelectPetBreed(e.target.value)}
               />
             </div>
 

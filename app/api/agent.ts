@@ -8,6 +8,7 @@ import { Pet } from "../models/pet";
 import { Kind } from "../models/kind";
 import { Breed } from "../models/breed";
 import { Color } from "../models/color";
+import { AddPet } from "../models/addpet";
 
 axios.defaults.baseURL = "https://petetco.maralamirkian.com/api/";
 
@@ -60,6 +61,7 @@ const Account = {
 const PetAction = {
   getAllPet: () => requests.get<Pet[]>("/pets"),
   getPet: (id: string) => requests.get<Pet>(`/pets/${id}`),
+  addPet: (pet: AddPet) => requests.post<Pet>("/pets", pet),
 };
 
 const PetBaseInfo = {
