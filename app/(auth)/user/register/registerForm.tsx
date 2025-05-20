@@ -1,22 +1,34 @@
 'use client'
 import { register } from "@/app/action/apiAction";
 import ErrorMessage from "@/app/component/general/ErrorMessage";
+import LoadingPage from "@/app/component/general/Loading";
 import MyInput from "@/app/component/general/MyInput";
 import { Button } from "flowbite-react";
 import { useState } from "react";
 
 export default function RegisterForm() {
-    const[message,setMessage] = useState('');
-
-    const formAction = async (formdata:FormData) =>{
-
-        const result = await register(formdata);
-        if(result.error)
-            setMessage(result.message);
-    }
-
+    const [message, setMessage] = useState('');
+      const [isLoading, setLoading] = useState(false);
+    
+      const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        setLoading(true);
+    
+        const formData = new FormData(event.currentTarget);
+        const result = await register(formData);
+    
+        if (result.error) {
+          setMessage(result.message);
+        } else {
+          // ✅ Redirect or show success as needed
+          // e.g., router.push('/dashboard')
+        }
+    
+        setLoading(false);
+      };
     return (
-        <form action={formAction}>
+        <form onSubmit={handleSubmit}>
+            {isLoading ? <LoadingPage /> : <></>}
             <MyInput required label='Full Name' name='name' placeholder='Full Name' />
             <MyInput required label='Email' name='email' placeholder='Email' type='email' />
             <MyInput required label='Password' name='password' placeholder='Password' type='password' />

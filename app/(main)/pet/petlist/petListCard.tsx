@@ -6,6 +6,7 @@ import PetCard from "./petCard";
 import { Button } from "flowbite-react";
 import Link from "next/link";
 import Image from "next/image";
+import LoadingPage from "@/app/component/general/Loading";
 
 export default function PetListCardPage() {
   const [listPet, setListPet] = useState<Pet[]>([]);
@@ -29,9 +30,7 @@ export default function PetListCardPage() {
   return (
     <>
     {isLoading == true? (<>
-    <div className="w-screen h-screen bg-slate-100 flex items-center justify-center text-center text-2xl text-orange-500 ">
-      Is loading...
-    </div>
+    <LoadingPage/>
     </>):( <>
 
       {listPet.length === 0 ? (
