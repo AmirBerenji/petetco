@@ -1,5 +1,6 @@
 "use client";
 import {
+  addPet,
   getAllColor,
   getAllPetBreed,
   getAllPetKind,
@@ -7,6 +8,7 @@ import {
 import MyComboBox from "@/app/component/general/MyCombobox";
 import MyDatePicker from "@/app/component/general/MyDatePicker";
 import MyInput from "@/app/component/general/MyInput";
+import { AddPet } from "@/app/models/addpet";
 import { Breed } from "@/app/models/breed";
 import { Color } from "@/app/models/color";
 import { Kind } from "@/app/models/kind";
@@ -17,13 +19,65 @@ export default function PetAddPage() {
   const [petKind, setPetKind] = useState<Kind[]>([]);
   const [petBreed, setPetBreed] = useState<Breed[]>([]);
   const [petColor, setPetColor] = useState<Color[]>([]);
+    const [isLoading, setLoading] = useState(false);
 
   const [selectPetKind, setSelectPetKind] = useState<Kind>();
-  const [selectPetBreed, setSelectPetBreed] = useState("");
+  const [selectPetBreed, setSelectPetBreed] = useState<Breed>();
   const [selectPetColor, setSelectPetColor] = useState<Color>();
   const [selectPetGender, setSelectPetGender] = useState<String>();
 
   const [image, setImage] = useState<string | null>(null);
+
+function base64ToFile(base64: string, filename: string): File {
+  const arr = base64.split(",");
+  const mime =  arr[0].match(/:(.*?);/)?.[1] || "image/jpeg";
+  const bstr = atob(arr[1]);
+  let n = bstr.length;
+  const u8arr = new Uint8Array(n);
+
+  while (n--) {
+    u8arr[n] = bstr.charCodeAt(n);
+  }
+
+  return new File([u8arr], filename, { type: mime });
+}
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      setLoading(true);
+  
+       const formData = new FormData(event.currentTarget);
+
+              const petData: AddPet = {
+                        breed_id: selectPetBreed?.id ?? 0,
+                        color_id: selectPetColor?.id ?? 0,
+                        name: (formData.get("Name") as string) ?? "",
+                         dob: (formData.get("Birthday") as string)
+                          ? new Date(formData.get("Birthday") as string).toISOString().split("T")[0]
+                          : "",
+                        gender: selectPetGender?.toString() ?? "",
+                        cover_image: base64ToFile(image??"", "cover1.jpg"),
+                        chipset_number: (formData.get("Chipset Number") as string) ?? null,
+                        passport_number: (formData.get("Passport Number") as string) ?? null,
+                      };
+
+
+      console.log(petData);                
+
+      const result = await addPet(petData);
+       console.log(result);
+       
+  
+      setLoading(false);
+    };
+
+
+
+
+
+
+
+
 
   // Handle image upload
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -83,6 +137,7 @@ export default function PetAddPage() {
 
   return (
     <>
+    <form onSubmit={handleSubmit} >
       <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-4 p-5 gap-5">
         {/* Image Upload Section */}
         <div className="w-full p-3 col-span-1 flex justify-center">
@@ -143,7 +198,10 @@ export default function PetAddPage() {
                 isNotFloatLabel
                 className="w-full"
                 classNameLabel="text-gray-700"
-                onChange={(e) => setSelectPetBreed(e.target.value)}
+                onChange={(e) => {
+                        const selected = petBreed.find(b => b.id === parseInt(e.target.value));
+                        setSelectPetBreed(selected);
+                      }}
               />
             </div>
 
@@ -159,7 +217,7 @@ export default function PetAddPage() {
                 isNotFloatLabel
                 className="w-full"
                 classNameLabel="text-gray-700"
-                onChange={(e) => console.log(e.target.value)}
+                onChange={(e) => setSelectPetGender(e.target.value)}
               />
             </div>
 
@@ -172,7 +230,10 @@ export default function PetAddPage() {
                 isNotFloatLabel
                 className="w-full"
                 classNameLabel="text-gray-700"
-                onChange={(e) => console.log(e.target.value)}
+                onChange={(e) => {
+                      const selected = petColor.find(b => b.id === parseInt(e.target.value));
+                      setSelectPetColor(selected);
+                    }}
               />
             </div>
 
@@ -203,13 +264,19 @@ export default function PetAddPage() {
 
             {/* Save Button */}
             <div className="col-span-2 justify-center items-center flex">
-              <Button className="w-full sm:w-auto lg:w-44 md:w-44 xl:w-44">
-                Save
-              </Button>
+               <Button
+                            size="2xs"
+                            type="submit"
+                            color="blue-gray"
+                            className="w-full rounded border-blue-gray-300 text-white border bg-[#7395AE] p-2"
+                          >
+                            <span>Save</span>
+                          </Button>
             </div>
           </div>
         </div>
       </div>
+      </form>
     </>
   );
 }
