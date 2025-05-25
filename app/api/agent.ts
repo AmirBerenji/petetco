@@ -28,27 +28,54 @@ axios.interceptors.request.use(
 
 const responseBody = <T>(response: AxiosResponse<T>) => response.data;
 
+// const requests = {
+//   get: <T>(url: string) =>
+//     axios
+//       .get<T, AxiosResponse<T, any>>(url)
+//       .then(responseBody)
+//       .catch((error) => {
+//         if (error.response) {
+//           return error.response.data;
+//         }
+//       }),
+//   getbyvalue: <T>(url: string, value: string) =>
+//     axios.get<T>(url + "?" + value).then(responseBody),
+//   post: <T>(url: string, body: {}) =>
+//     axios
+//       .post<T, AxiosResponse<T, any>>(url, body)
+//       .then(responseBody)
+//       .catch((error) => {
+//         if (error.response) {
+//           return error.response.data;
+//         }
+//       }),
+// };
+
 const requests = {
   get: <T>(url: string) =>
     axios
-      .get<T, AxiosResponse<T, any>>(url)
+      .get<T, AxiosResponse<T>>(url)
       .then(responseBody)
-      .catch((error) => {
-        if (error.response) {
-          return error.response.data;
-        }
-      }),
+      .catch((error) => error.response?.data),
+
   getbyvalue: <T>(url: string, value: string) =>
     axios.get<T>(url + "?" + value).then(responseBody),
-  post: <T>(url: string, body: {}) =>
+
+  post: <T>(url: string, body: object) =>
     axios
-      .post<T, AxiosResponse<T, any>>(url, body)
+      .post<T, AxiosResponse<T>>(url, body)
       .then(responseBody)
-      .catch((error) => {
-        if (error.response) {
-          return error.response.data;
-        }
-      }),
+      .catch((error) => error.response?.data),
+
+  postForm: <T>(url: string, formData: FormData) =>
+    axios
+      .post<T, AxiosResponse<T>>(url, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then(responseBody)
+      .catch((error) => error.response?.data),
 };
 
 const Account = {
@@ -61,7 +88,20 @@ const Account = {
 const PetAction = {
   getAllPet: () => requests.get<Pet[]>("/pets"),
   getPet: (id: string) => requests.get<Pet>(`/pets/${id}`),
-  addPet: (pet: AddPet) => requests.post<Pet>("/pets", pet),
+  addPet: (pet: AddPet) => {
+    const formData = new FormData();
+
+    Object.entries(pet).forEach(([key, value]) => {
+      if (value !== null && value !== undefined) {
+        if (value instanceof File) {
+          formData.append(key, value); // send file as-is
+        } else {
+          formData.append(key, String(value)); // convert all other types to string
+        }
+      }
+    });
+    return requests.postForm<Pet>("/pets", formData);
+  },
 };
 
 const PetBaseInfo = {

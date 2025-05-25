@@ -93,8 +93,12 @@ export async function getPet(id: string) {
   return req.data;
 }
 
-export async function addPet(pet: AddPet) {
+export async function addPet(pet: AddPet, base64: string) {
+  var file = base64ToFile(base64 ?? "", pet.name);
+  pet.cover_image = file;
+  console.log("apiAction", pet);
   const req = await agent.PetAction.addPet(pet);
+  console.log("apiAction", req);
   return req.data;
 }
 
@@ -111,4 +115,18 @@ export async function getAllPetBreed(id: string) {
 export async function getAllColor() {
   const req = await agent.PetBaseInfo.getAllPetColor();
   return req.data;
+}
+
+function base64ToFile(base64: string, filename: string): File {
+  const arr = base64.split(",");
+  const mime = arr[0].match(/:(.*?);/)?.[1] || "image/jpeg";
+  const bstr = atob(arr[1]);
+  let n = bstr.length;
+  const u8arr = new Uint8Array(n);
+
+  while (n--) {
+    u8arr[n] = bstr.charCodeAt(n);
+  }
+
+  return new File([u8arr], filename, { type: mime });
 }
