@@ -126,7 +126,7 @@ export default function PetAddPage() {
               {/* Image Upload Section */}
               <div className="w-full p-3 col-span-1 flex justify-center">
                 <label htmlFor="imageUpload" className="cursor-pointer">
-                  <div className="shadow-lg rounded-full lg:rounded-xl md:rounded-xl h-72 w-72 bg-white m-auto border-10 border-blue-gray-800 flex items-center justify-center overflow-hidden">
+                  <div className="shadow-lg rounded-full lg:rounded-xl md:rounded-xl  ml-10   h-72 w-72 bg-slate-100 m-auto border-10 border-blue-gray-800 flex items-center justify-center overflow-hidden">
                     {image ? (
                       <img
                         src={image}
