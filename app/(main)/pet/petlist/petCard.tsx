@@ -56,11 +56,11 @@ export default function PetCard(prop: Props) {
             )}
           </div>
           <div className="p-2 text-center">
-            <h4 className="mb-1 uppercase font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+            <h4 className="mb-1  whitespace-nowrap overflow-hidden text-ellipsis uppercase font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
               {prop.pet.name}
             </h4>
             <hr></hr>
-            <div className="grid grid-cols-1 text-left p-3 text-gray-400 uppercase ">
+            <div className="grid grid-cols-1 text-left p-3 text-gray-400 text-1xl  ">
               <div>Breed: {prop.pet.breed.name}</div>
               <div>Color: {prop.pet.color.name}</div>
               <div>Gender: {prop.pet.gender}</div>
